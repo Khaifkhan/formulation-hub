@@ -1,0 +1,90 @@
+@use '../abstracts' as *;
+
+.tile {
+  @include fiori-tile;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &__icon {
+    @include flex-center;
+    width: 48px;
+    height: 48px;
+    border-radius: $border-radius-lg;
+    background: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    font-size: $font-size-2xl;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.5;
+  }
+
+  &__footer {
+    @include flex-between;
+    padding-top: $spacing-sm;
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  &__badge {
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-md;
+    font-size: $font-size-xs;
+    font-weight: 500;
+
+    &--success {
+      background: hsl(var(--success) / 0.1);
+      color: hsl(var(--success));
+    }
+
+    &--warning {
+      background: hsl(var(--warning) / 0.1);
+      color: hsl(var(--warning));
+    }
+
+    &--error {
+      background: hsl(var(--destructive) / 0.1);
+      color: hsl(var(--destructive));
+    }
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    
+    &:hover {
+      transform: none;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  &--no-access {
+    background: hsl(var(--muted));
+    border-color: hsl(var(--border));
+
+    .tile__icon {
+      background: hsl(var(--muted-foreground) / 0.1);
+      color: hsl(var(--muted-foreground));
+    }
+
+    .tile__title {
+      color: hsl(var(--muted-foreground));
+    }
+  }
+}
