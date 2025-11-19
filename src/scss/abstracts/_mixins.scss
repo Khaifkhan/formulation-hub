@@ -1,0 +1,52 @@
+@use './variables' as *;
+
+@mixin card-base {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: all $transition-base;
+}
+
+@mixin card-hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+@mixin fiori-tile {
+  @include card-base;
+  padding: $spacing-xl;
+  cursor: pointer;
+  border: 1px solid hsl(var(--border));
+  
+  &:hover:not(.disabled) {
+    @include card-hover;
+  }
+
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin truncate-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin focus-ring {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
